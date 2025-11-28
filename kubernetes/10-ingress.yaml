@@ -10,10 +10,10 @@ metadata:
 spec:
   tls:
   - hosts:
-    - http://13.201.229.188
+    - 13.201.229.188.sslip.io
     secretName: easyshop-tls-secret  # Cert-Manager will manage this
   rules:
-  - host: easyshop.letsdeployit.com
+  - host: 13.201.229.188.sslip.io
     http:
       paths:
       - path: /
