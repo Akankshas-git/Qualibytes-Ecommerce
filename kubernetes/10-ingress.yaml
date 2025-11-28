@@ -13,7 +13,7 @@ spec:
     - 43.204.29.50.sslip.io
     secretName: easyshop-tls-secret
   rules:
-  - host: 43.204.29.50.sslip.io
+  - host: easyshop.letsdeployit.com
     http:
       paths:
       - path: /
