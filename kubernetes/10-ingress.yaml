@@ -13,7 +13,7 @@ spec:
     - 13.201.229.188.sslip.io
     secretName: easyshop-tls-secret  # Cert-Manager will manage this
   rules:
-  - host: 13.201.229.188.sslip.io
+  - host: easyshop.letsdeployit.com
     http:
       paths:
       - path: /
