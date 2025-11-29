@@ -14,8 +14,8 @@ spec:
         app: easyshop
     spec:
       containers:
-        - name: easyshop
-          image: trainwithshubham/easyshop-app:1
+        - name: qbs-app
+          image: satyamsri/qualibytes-shop-app:1
           imagePullPolicy: Always
           ports:
             - containerPort: 3000

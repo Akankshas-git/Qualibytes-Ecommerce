@@ -118,7 +118,7 @@ This guide will help you run EasyShop using Docker containers. No local Node.js 
 1. Create a file named `.env.local` in the root directory with the following content:
 ```env
 # Database Configuration
-MONGODB_URI=mongodb://easyshop-mongodb:27017/easyshop
+MONGODB_URI=mongodb://qbs-mongodb:27017/easyshop
 
 # NextAuth Configuration
 NEXTAUTH_URL=http://localhost:3000  # Replace with your EC2 instance's public IP or put localhost:3000
@@ -172,7 +172,7 @@ docker network create easyshop-network
 2. Start MongoDB:
 ```bash
 docker run -d \
-  --name easyshop-mongodb \
+  --name qbs-mongodb \
   --network easyshop-network \
   -p 27017:27017 \
   -v mongodb_data:/data/db \
@@ -181,29 +181,29 @@ docker run -d \
 
 3. Build the main application:
 ```bash
-docker build -t easyshop .
+docker build -t satyamsri/qualibytes-shop-app:1 .
 ```
 
 4. Build and run data migration:
 ```bash
 # Build migration image
-docker build -t easyshop-migration -f scripts/Dockerfile.migration .
+docker build -t satyamsri/qualibytes-shop-migration:1 -f scripts/Dockerfile.migration .
 
 # Run migration
 docker run --rm \
   --network easyshop-network \
   --env-file .env.local \
-  easyshop-migration
+  qbs-migration
 ```
 
 5. Start the EasyShop application:
 ```bash
 docker run -d \
-  --name easyshop \
+  --name qbs-app \
   --network easyshop-network \
   -p 3000:3000 \
   --env-file .env.local \
-  easyshop:latest
+  satyamsri/qualibytes-shop-app:1
 ```
 
 ### Accessing the Application
@@ -219,14 +219,14 @@ docker run -d \
 docker ps
 
 # View container logs
-docker logs easyshop
-docker logs easyshop-mongodb
+docker logs qbs-app
+docker logs qbs-mongodb
 
 # Stop containers
-docker stop easyshop easyshop-mongodb
+docker stop qbs-app qbs-mongodb
 
 # Remove containers
-docker rm easyshop easyshop-mongodb
+docker rm qbs-app qbs-mongodb
 
 # Remove network
 docker network rm easyshop-network
@@ -236,7 +236,7 @@ docker network rm easyshop-network
 
 1. If you can't connect to MongoDB:
    - Make sure the MongoDB container is running: `docker ps`
-   - Check MongoDB logs: `docker logs easyshop-mongodb`
+  - Check MongoDB logs: `docker logs qbs-mongodb`
    - Verify network connection: `docker network inspect easyshop-network`
 
 2. If the application isn't accessible:

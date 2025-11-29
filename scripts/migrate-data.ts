@@ -2,7 +2,7 @@ import { promises as fs } from 'fs';
 import path from 'path';
 import mongoose from 'mongoose';
 
-const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://easyshop-mongodb:27017/easyshop';
+const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://qbs-mongodb:27017/easyshop';
 const scriptDir = path.resolve(path.dirname(''));
 
 // Product Schema

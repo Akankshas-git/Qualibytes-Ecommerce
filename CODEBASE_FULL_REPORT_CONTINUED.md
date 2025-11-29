@@ -31,7 +31,7 @@ All Kubernetes manifests live under `kubernetes/`. They set up namespace, MongoD
 
 ### `kubernetes/08-easyshop-deployment.yaml` and `kubernetes/09-easyshop-service.yaml`
 - Purpose: Deploy the Next.js app as a Deployment with 2 replicas, configure env from configmap/secret, expose via `easyshop-service` NodePort on `30000`.
-- Key points: `image: trainwithshubham/easyshop-app:1` (image tag 1). Readiness/liveness/startup probes check `/` on port 3000. Uses `http` env values from ConfigMap/Secret.
+- Key points: `image: satyamsri/qualibytes-shop-app:1` (image tag 1). Readiness/liveness/startup probes check `/` on port 3000. Uses `http` env values from ConfigMap/Secret.
 - Observations: NodePort is used, combined with an Ingress resource; depending on cluster setup, a ClusterIP service is more common with Ingress. Also, ensure the container serves on `/` and port `3000` successfully for probes to pass.
 
 ### `kubernetes/10-ingress.yaml`
@@ -43,8 +43,8 @@ All Kubernetes manifests live under `kubernetes/`. They set up namespace, MongoD
 - Purpose: Horizontal Pod Autoscaler for the `easyshop` deployment.
 - Key points: minReplicas 2, maxReplicas 5, scales on CPU utilization target 70%.
 
-### `kubernetes/12-migration-job.yaml`
-- Purpose: Job to run database migrations using a migration image `trainwithshubham/easyshop-migration:1`.
+-### `kubernetes/12-migration-job.yaml`
+- Purpose: Job to run database migrations using a migration image `satyamsri/qualibytes-shop-migration:1`.
 - Key points: Sets `MONGODB_URI` to the cluster-internal MongoDB service.
 - Observations: Good pattern for running one-off migrations; ensure the migration image contains the migration script and is idempotent.
 

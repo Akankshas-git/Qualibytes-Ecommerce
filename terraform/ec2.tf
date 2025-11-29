@@ -16,6 +16,10 @@ resource "aws_key_pair" "deployer" {
   public_key = file("qualibytes-key.pub")
 }
 
+resource "aws_eip" "my_eip" {}
+resource "aws_eip_association" "eip_assoc" {}
+
+
 resource "aws_default_vpc" "default" {
 
 }

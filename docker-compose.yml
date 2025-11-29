@@ -3,7 +3,7 @@ version: '3.8'
 services:
   mongodb:
     image: mongo:latest
-    container_name: easyshop-mongodb
+    container_name: qbs-mongodb
     ports:
       - "27017:27017"
     volumes:
@@ -18,10 +18,11 @@ services:
       - easyshop-network
 
   migration:
+    image: satyamsri/qualibytes-shop-migration:1
     build:
       context: .
       dockerfile: scripts/Dockerfile.migration
-    container_name: easyshop-migration
+    container_name: qbs-migration
     env_file:
       - .env.local
     depends_on:
@@ -31,10 +32,11 @@ services:
       - easyshop-network
 
   app:
+    image: satyamsri/qualibytes-shop-app:1
     build:
       context: .
       dockerfile: Dockerfile
-    container_name: easyshop
+    container_name: qbs-app
     ports:
       - "3000:3000"
     env_file:
