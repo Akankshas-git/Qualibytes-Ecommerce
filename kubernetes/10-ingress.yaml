@@ -24,7 +24,7 @@ spec:
                 port:
                   number: 80
 
-    - host: www.asriv.shop
+    - host: asriv.shop
       http:
         paths:
           - path: /
