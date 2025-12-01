@@ -30,11 +30,11 @@ pipeline {
             }
         }
 
-        // 🔥 NEW STAGE: Cleanup old Docker images to avoid disk full issues
+        //  NEW STAGE: Cleanup old Docker images to avoid disk full issues
         stage('Cleanup Old Docker Images') {
             steps {
                 script {
-                    echo "🧹 Cleaning up old Docker images, containers & volumes..."
+                    echo "Cleaning up old Docker images, containers & volumes..."
 
                     // Remove dangling images
                     sh "docker image prune -f"
