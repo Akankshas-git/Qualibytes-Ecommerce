@@ -144,7 +144,7 @@ aws configure
 ```
 
 ```bash
-aws eks --region eu-west-1 update-kubeconfig --name qualibytes-eks-cluster
+aws eks --region ap-south-1 update-kubeconfig --name qualibytes-eks-cluster
 ```
 9. **Check your cluster:**
 ```bash
