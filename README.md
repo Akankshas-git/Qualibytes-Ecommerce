@@ -421,13 +421,13 @@ kubectl get svc nginx-ingress-ingress-nginx-controller -n ingress-nginx -o jsonp
 > > apiVersion: v1
 > > kind: ConfigMap
 > > metadata:
-> >   name: easyshop-config
-> >   namespace: easyshop
+> >   name: qbshop-config
+> >   namespace: qbshop
 > > data:
 > >   MONGODB_URI: "mongodb://mongodb-service:27017/easyshop"
 > >   NODE_ENV: "production"
-> >   NEXT_PUBLIC_API_URL: "https://easyshop.letsdeployit.com/api"
-> >   NEXTAUTH_URL: "https://easyshop.letsdeployit.com/"
+> >   NEXT_PUBLIC_API_URL: "https://qbshop.asriv.shop/api"
+> >   NEXTAUTH_URL: "https://qbshop.asriv.shop/"
 > >   NEXTAUTH_SECRET: "HmaFjYZ2jbUK7Ef+wZrBiJei4ZNGBAJ5IdiOGAyQegw="
 > >   JWT_SECRET: "e5e425764a34a2117ec2028bd53d6f1388e7b90aeae9fa7735f2469ea3a6cc8c"
 > > ```
@@ -438,8 +438,8 @@ kubectl get svc nginx-ingress-ingress-nginx-controller -n ingress-nginx -o jsonp
 > > apiVersion: networking.k8s.io/v1
 > > kind: Ingress
 > > metadata:
-> >   name: easyshop-ingress
-> >   namespace: easyshop
+> >   name: qbshop-ingress
+> >   namespace: qbshop
 > >   annotations:
 > >     nginx.ingress.kubernetes.io/proxy-body-size: "50m"
 > >     kubernetes.io/ingress.class: "nginx"
@@ -448,17 +448,17 @@ kubectl get svc nginx-ingress-ingress-nginx-controller -n ingress-nginx -o jsonp
 > > spec:
 > >   tls:
 > >   - hosts:
-> >     - easyshop.letsdeployit.com
-> >     secretName: easyshop-tls
+> >     - qbshop.asriv.shop
+> >     secretName: qbshop-tls
 > >   rules:
-> >   - host: easyshop.letsdeployit.com
+> >   - host: qbshop.asriv.shop
 > >     http:
 > >       paths:
 > >       - path: /
 > >         pathType: Prefix
 > >         backend:
 > >           service:
-> >             name: easyshop-service
+> >             name: qbshop-service
 > >             port:
 > >               number: 80
 > > ```
@@ -473,11 +473,11 @@ kubectl get svc nginx-ingress-ingress-nginx-controller -n ingress-nginx -o jsonp
 > #### 4. **Commands to check the status:**
 >
 >> ```bash
->> kubectl get certificate -n easyshop
+>> kubectl get certificate -n qbshop
 >> ```
 
 >> ```bash
->> kubectl describe certificate easyshop-tls -n easyshop
+>> kubectl describe certificate qbshop-tls -n qbshop
 >> ```
 >
 >> ```bash
@@ -485,14 +485,13 @@ kubectl get svc nginx-ingress-ingress-nginx-controller -n ingress-nginx -o jsonp
 >> ```
 >
 >> ```bash
->> kubectl get challenges -n easyshop
+>> kubectl get challenges -n qbshop
 >> ```
 >
 >> ```bash
->> kubectl describe challenges -n easyshop
+>> kubectl describe challenges -n qbshop
 >> ```
 
 ## **Congratulations!** <br/>
-![EasyShop Website Screenshot](./public/Deployed.png)
 
 ### Your project is now deployed.
