@@ -18,7 +18,7 @@ services:
       - easyshop-network
 
   migration:
-    image: satyamsri/qualibytes-shop-migration:latest
+    image: akanksha925/qualibytes-shop-migration:latest
     build:
       context: .
       dockerfile: scripts/Dockerfile.migration
@@ -32,7 +32,7 @@ services:
       - easyshop-network
 
   app:
-    image: satyamsri/qualibytes-shop-app:latest 
+    image: akanksha925/qualibytes-shop-app:latest 
     build:
       context: .
       dockerfile: Dockerfile
